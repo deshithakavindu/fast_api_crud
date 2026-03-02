@@ -10,13 +10,22 @@ from app.models import Product
 app = FastAPI()
 database_models.Base.metadata.create_all(bind=engine)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 @app.get("/")
 def greet():
-    return "Hello world"
+    return "Hello World"
 
 # list of products with 4 products like phones, laptops, pens, tables
 products = [
-    Product(id=1, name="Phone", description="A smartphone", price=699.99, quantity=50),
+    Product(id=1, name="Phone", description="A nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", price=699.99, quantity=50),
     Product(id=2, name="Laptop", description="A powerful laptop", price=999.99, quantity=30),
     Product(id=3, name="Pen", description="A blue ink pen", price=1.99, quantity=100),
     Product(id=4, name="Table", description="A wooden table", price=199.99, quantity=20),
